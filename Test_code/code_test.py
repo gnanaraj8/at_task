@@ -22,8 +22,8 @@ class Guvi:
         self.driver.get(self.url)
         # Wait for the presence of a specific element on the page
         try:
-            element_present=EC.presence_of_element_located(by=By.XPATH, value=Homepage.logo_xpath)
-            WebDriverWait(driver, TIMEOUT).until(element_present)
+            element_present=EC.presence_of_element_located(by=By.XPATH, value=inspect_test_data.Homepage.logo_xpath)
+            WebDriverWait(self.driver.TIMEOUT).until(element_present)
             print("homepage loaded success")
         except TimeoutException:
             print("page not load")
@@ -32,14 +32,14 @@ class Guvi:
     #Test Case 2(Registration with valid data)
     def register(self):
         self.driver.get(self.url)
-        self.driver.find_element(by=By.ID, value=Signup.signup_button).click()
-        self.driver.find_element(by=By.ID, value=Signup.signup_username).send_keys("raj kumar")
-        self.driver.find_element(by=By.ID, value=Signup.signup_password).send_keys("098765")
-        self.driver.find_element(by=By.ID, value=Signup.signup_submit_button).click()
+        self.driver.find_element(by=By.ID, value=inspect_test_data.Signup.signup_button).click()
+        self.driver.find_element(by=By.ID, value=inspect_test_data.Signup.signup_username).send_keys("raj kumar")
+        self.driver.find_element(by=By.ID, value=inspect_test_data.Signup.signup_password).send_keys("098765")
+        self.driver.find_element(by=By.ID, value=inspect_test_data.Signup.signup_submit_button).click()
         # Wait for the confirmation  or element on the page
         try:
-            confirmation= EC.text_to_be_present_in_element((by=By.ID, value=Signup.sign_submit_button)
-            WebDriverWait(driver, TIMEOUT).until(confirmation)
+            confirmation= EC.text_to_be_present_in_element(by=By.ID, value=inspect_test_data.Signup.sign_submit_button)
+            WebDriverWait(self.driver.TIMEOUT).until(confirmation)
             print("Registration successful!")
             assert True
         except TimeoutException:
@@ -48,14 +48,14 @@ class Guvi:
     #Test Case 3(User Login)
         def login(self):
             self.driver.get(self.url)
-            self.driver.find_element(by=By.ID, value=Login.login_button).click()
-            self.driver.find_element(by=By.ID, value=Login.login_usernam).send_keys("raj kumar")
-            self.driver.find_element(by=By.ID, value=Login.login_password).send_keys("098765")
-            self.driver.find_element(by=By.ID, value=Login.login_submit).click()
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Login.login_button).click()
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Login.login_usernam).send_keys("raj kumar")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Login.login_password).send_keys("098765")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Login.login_submit).click()
             # Wait for the  message or element on the page
             try:
-                message = EC.text_to_be_present_in_element((by=By.ID, value=Login.login_submit)
-                WebDriverWait(driver, TIMEOUT).until(message)
+                message = EC.text_to_be_present_in_element(by=By.ID, value=inspect_test_data.Login.login_submit)
+                WebDriverWait(self.driver.TIMEOUT).until(message)
                 print("Registration successful!")
                 assert True
             except TimeoutException:
@@ -65,13 +65,13 @@ class Guvi:
         #Test Case 4(Product Selection and Cart Interaction)
         def product_selection(self):
             self.driver.get(self.url)
-            self.driver.find_element(by=By.ID, value=category.select_phone).click()
-            self.driver.find_element(by=By.XPATH, value=catgory.select_samsung).click()
-            self.driver.find_element(by=By.XPATH, value=Category.select_add_cart).click()
+            self.driver.find_element(by=By.ID, value=inspect_test_data.category.select_phone).click()
+            self.driver.find_element(by=By.XPATH, value=inspect_test_data.catgory.select_samsung).click()
+            self.driver.find_element(by=By.XPATH, value=inspect_test_data.Category.select_add_cart).click()
             # Wait for the  message or element on the page
             try:
-                verify = EC.text_to_be_present_in_element((by=By.XPATH, value=Category.select_add_cart)
-                WebDriverWait(driver, TIMEOUT).until(verify)
+                verify = EC.text_to_be_present_in_element(by=By.XPATH, value=inspect_test_data.Category.select_add_cart)
+                WebDriverWait(self.driver.TIMEOUT).until(verify)
                 print("Registration successful!")
                 assert True
             except TimeoutException:
@@ -81,19 +81,19 @@ class Guvi:
         #Test Case 5(Placing an Order)
         def placing_order(self):
             self.driver.get(self.url)
-            self.driver.find_element(by=By.XPATH, value=Cart.select_cart).click()
-            self.driver.find_element(by=By.XPATH, value=Cart.select_plac_order).click()
-            self.driver.find_element(by=By.ID, value=Cart.input_name).send_keys("raj kumar")
-            self.driver.find_element(by=By.ID, value=Cart.input_country).send_keys("india")
-            self.driver.find_element(by=By.ID, value=Cart.input_city).send_keys("goa")
-            self.driver.find_element(by=By.ID, value=Cart.input_credit_card).send_keys("456781234509")
-            self.driver.find_element(by=By.ID, value=Cart.input_month).send_keys("november")
-            self.driver.find_element(by=By.ID, value=Cart.input_year).send_keys("2023")
-            self.driver.find_element(by=By.XPATH, value=Cart.select_purchase).click()
+            self.driver.find_element(by=By.XPATH, value=inspect_test_data.Cart.select_cart).click()
+            self.driver.find_element(by=By.XPATH, value=inspect_test_data.Cart.select_plac_order).click()
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Cart.input_name).send_keys("raj kumar")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Cart.input_country).send_keys("india")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Cart.input_city).send_keys("goa")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Cart.input_credit_card).send_keys("456781234509")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Cart.input_month).send_keys("november")
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Cart.input_year).send_keys("2023")
+            self.driver.find_element(by=By.XPATH, value=inspect_test_data.Cart.select_purchase).click()
             # Wait for the  message or element on the page
             try:
-                verification = EC.text_to_be_present_in_element((by=By.XPATH, value=Cart.select_purchase)
-                WebDriverWait(driver, TIMEOUT).until(verification)
+                verification = EC.text_to_be_present_in_element(by=By.XPATH, value=inspect_test_data.Cart.select_purchase)
+                WebDriverWait(self.driver.TIMEOUT).until(verification)
                 print("Registration successful!")
                 assert True
             except TimeoutException:
@@ -101,11 +101,11 @@ class Guvi:
                 assert False
         def Logout(self):
             self.driver.get(self.url)
-            self.driver.find_element(by=By.ID, value=Logout.select_logout).click()
+            self.driver.find_element(by=By.ID, value=inspect_test_data.Logout.select_logout).click()
             # Wait for the presence of a specific element on the page
             try:
-                element_present_homepage = EC.presence_of_element_located(by=By.XPATH, value=Homepage.logo_xpath)
-                WebDriverWait(driver, TIMEOUT).until(element_present_homepage)
+                element_present_homepage = EC.presence_of_element_located(by=By.XPATH, value=inspect_test_data.Homepage.logo_xpath)
+                WebDriverWait(self.driver.TIMEOUT).until(element_present_homepage)
                 print("homepage loaded success")
             except TimeoutException:
                 print("page not load")
